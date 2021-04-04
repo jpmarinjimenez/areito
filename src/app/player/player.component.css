@@ -10,10 +10,9 @@
     color: #ffffff;
 }
 
-/* Left */
 #player .cover {
     display: inline-block;
-    padding-right: 15px;
+    padding-left: 15px;
 }
 
 #player .cover img {
@@ -22,49 +21,36 @@
 }
 
 #player .info {
+    text-align: right;
     display: inline-block;
     vertical-align: middle;
     line-height: 1.7;
 }
 
-#player .info .cancion {
+#player .info .title {
     display: block;
     font-size: 12px;
     font-weight: 500;
 }
 
-#player .info .album {
+#player .info .artist {
     display: block;
     font-weight: 300;
     font-size: 11px;
     color: #dee2e6;
 }
 
-/* Middle */
 #player .player-buttons {
+    max-width: 90px;
     margin-bottom: 15px;
-}
-
-#player .player-buttons .bi {
-    width: 18px;
-    height: 18px;
 }
 
 #player .player-buttons .bi-play-circle,
 #player .player-buttons .bi-pause-circle {
-    width: 28px;
-    height: 28px;
+    width: 60px;
+    height: 60px;
 }
 
-#player .progress-time {
-    font-size: 12px;
-}
-
-#player .progress-bar {
-    background-color: #fa022b;
-}
-
-/* Right */
 #pause-button {
     display: none;
 }

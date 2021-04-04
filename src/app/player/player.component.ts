@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Observable } from "rxjs";
+import { PlayerService } from "./player.service";
 
 @Component({
     selector: 'app-player',
@@ -8,21 +10,45 @@ import { Component } from "@angular/core";
 
 export class PlayerComponent {
     audio;
-    playing = false;
+    playing = true;
 
-    constructor() {
+    infoInterval: any;
+    currentSongInfo = {
+        artist: '',
+        title: '',
+        imageurl: ''
+    };
+
+
+
+    constructor(private playerService: PlayerService) {
+        this.updateInfo();
         this.audio = new Audio('http://server2.ejeserver.com:8332/stream');
         this.audio.play();
     }
 
     play = () => {
         this.audio.play();
-        this.audio.muted = false;
         this.playing = true;
+        this.infoInterval = setInterval(this.updateInfo, 30000);
     }
 
     pause = () => {
         this.audio.pause();
         this.playing = false;
+        clearInterval(this.infoInterval);
+    }
+
+    updateInfo = () => {
+        let infoObs: Observable<any>;
+        infoObs = this.playerService.getStatus();
+        
+        infoObs.subscribe(
+            (responseData) => {
+                this.currentSongInfo.artist = responseData.data[0].track.artist;
+                this.currentSongInfo.title = responseData.data[0].track.title;
+                this.currentSongInfo.imageurl = responseData.data[0].track.imageurl;
+            }
+        );
     }
 }
