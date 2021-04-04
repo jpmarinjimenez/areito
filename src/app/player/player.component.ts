@@ -44,7 +44,12 @@ export class PlayerComponent {
             (responseData) => {
                 this.currentSongInfo.artist = responseData.data[0].track.artist;
                 this.currentSongInfo.title = responseData.data[0].track.title;
-                this.currentSongInfo.imageurl = responseData.data[0].track.imageurl;
+                
+                if (responseData.data[0].track.imageurl === 'https://server2.ejeserver.com:2197/static/areitoradio/covers/nocover.png') {
+                    this.currentSongInfo.imageurl = 'assets/img/areitodisco.png'
+                } else {
+                    this.currentSongInfo.imageurl = responseData.data[0].track.imageurl;
+                }
 
                 document.title = this.currentSongInfo.artist + ' - ' + this.currentSongInfo.title;
             }
