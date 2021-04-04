@@ -10,7 +10,7 @@ import { PlayerService } from "./player.service";
 
 export class PlayerComponent {
     audio;
-    playing = true;
+    playing = false;
 
     infoInterval: any;
     currentSongInfo = {
@@ -22,7 +22,6 @@ export class PlayerComponent {
     constructor(private playerService: PlayerService) {
         this.updateInfo();
         this.audio = new Audio('http://server2.ejeserver.com:8332/stream');
-        this.play();
     }
 
     play = () => {
@@ -47,7 +46,7 @@ export class PlayerComponent {
                 this.currentSongInfo.title = responseData.data[0].track.title;
                 this.currentSongInfo.imageurl = responseData.data[0].track.imageurl;
 
-                document.title = 'Areito Radio - ' + this.currentSongInfo.artist + ' - ' + this.currentSongInfo.title;
+                document.title = this.currentSongInfo.artist + ' - ' + this.currentSongInfo.title;
             }
         );
     }

@@ -39,7 +39,7 @@
             </div>
 
             <div class="cover">
-                <img src="{{ currentSongInfo.imageurl }}" class="img-fluid" alt="" />
+                <img src="{{ currentSongInfo.imageurl }}" class="img-fluid rounded-circle" [ngClass]="{'rotate' : playing}" alt="" />
             </div>
         </div>
     </div>
