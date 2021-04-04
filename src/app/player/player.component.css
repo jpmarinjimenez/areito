@@ -53,6 +53,16 @@
     color: #dee2e6;
 }
 
+@media (max-width: 768px) {
+    #player .info .title,
+    #player .info .artist {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+    }
+}
+
 #player .player-buttons {
     max-width: 90px;
     margin-bottom: 15px;
