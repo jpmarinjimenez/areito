@@ -19,12 +19,10 @@ export class PlayerComponent {
         imageurl: ''
     };
 
-
-
     constructor(private playerService: PlayerService) {
         this.updateInfo();
         this.audio = new Audio('http://server2.ejeserver.com:8332/stream');
-        this.audio.play();
+        this.play();
     }
 
     play = () => {
@@ -48,6 +46,8 @@ export class PlayerComponent {
                 this.currentSongInfo.artist = responseData.data[0].track.artist;
                 this.currentSongInfo.title = responseData.data[0].track.title;
                 this.currentSongInfo.imageurl = responseData.data[0].track.imageurl;
+
+                document.title = 'Areito Radio - ' + this.currentSongInfo.artist + ' - ' + this.currentSongInfo.title;
             }
         );
     }
