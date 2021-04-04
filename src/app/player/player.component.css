@@ -50,6 +50,7 @@
     height: 18px;
 }
 
+#player .player-buttons .bi-play-circle,
 #player .player-buttons .bi-pause-circle {
     width: 28px;
     height: 28px;
@@ -64,3 +65,6 @@
 }
 
 /* Right */
+#pause-button {
+    display: none;
+}
