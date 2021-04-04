@@ -11,12 +11,14 @@ import { PlayerService } from "./player.service";
 export class PlayerComponent {
     audio;
     playing = false;
+    DEFAULTDISKIMG = 'assets/img/areitodisco.png';
+    NOCOVERIMG = 'https://server2.ejeserver.com:2197/static/areitoradio/covers/nocover.png';
 
     infoInterval: any;
     currentSongInfo = {
         artist: '',
         title: '',
-        imageurl: ''
+        imageurl: this.DEFAULTDISKIMG
     };
 
     constructor(private playerService: PlayerService) {
@@ -45,8 +47,8 @@ export class PlayerComponent {
                 this.currentSongInfo.artist = responseData.data[0].track.artist;
                 this.currentSongInfo.title = responseData.data[0].track.title;
                 
-                if (responseData.data[0].track.imageurl === 'https://server2.ejeserver.com:2197/static/areitoradio/covers/nocover.png') {
-                    this.currentSongInfo.imageurl = 'assets/img/areitodisco.png'
+                if (responseData.data[0].track.imageurl === this.NOCOVERIMG) {
+                    this.currentSongInfo.imageurl = this.DEFAULTDISKIMG;
                 } else {
                     this.currentSongInfo.imageurl = responseData.data[0].track.imageurl;
                 }
