@@ -2,14 +2,17 @@ import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { ChatComponent } from "./chat/chat.component";
 import { PlayerComponent } from "./player/player.component";
+
+import { AppRoutingModule } from "./app-routing.module";
 import { ServiceWorkerModule } from "@angular/service-worker";
+
 import { environment } from "../environments/environment";
 
 @NgModule({
-    declarations: [AppComponent, PlayerComponent],
+    declarations: [AppComponent, PlayerComponent, ChatComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
