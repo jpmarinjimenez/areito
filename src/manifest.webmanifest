@@ -1,7 +1,7 @@
 {
     "name": "Areito Radio",
     "short_name": "Areito",
-    "theme_color": "#fa022b",
+    "theme_color": "#fa082b",
     "background_color": "#000000",
     "display": "standalone",
     "scope": "./",

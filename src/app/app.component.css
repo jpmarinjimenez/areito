@@ -1,3 +1,39 @@
-.navbar .logotipo {
-    max-height: 75px;
+#contenido {
+    height: 100%;
+    padding-bottom: 90px;
+}
+
+.columna-redes-sociales {
+    margin-top: 25px;
+}
+
+.columna-redes-sociales .youtube,
+.columna-redes-sociales .facebook {
+    margin-top: 25px;
+}
+
+@media (min-width: 768px) {
+    .columna-redes-sociales {
+        text-align: right;
+    }
+}
+
+@media (max-width: 767px) {
+    .columna-redes-sociales {
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 25px;
+        text-align: center;
+    }
+
+    .columna-redes-sociales .instagram .contenedor-iframe {
+        width: 300px;
+        margin: auto;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .columna-redes-sociales .instagram .contenedor-iframe iframe {
+        margin-left: -11px;
+    }
 }

@@ -1,0 +1,13 @@
+nav {
+    background-color: #000;
+}
+
+.navbar-toggler,
+.nav-item a {
+    color: #FFFFFF;
+}
+
+.navbar-brand {
+    display: block;
+    margin: auto;
+}
