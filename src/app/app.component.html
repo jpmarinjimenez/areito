@@ -1,18 +1,14 @@
-<div id="contenido">
-    <!-- <router-outlet></router-outlet> -->
-    
-    <app-menu></app-menu>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7">
-                <app-chat></app-chat>
-            </div>
-            <div class="col-md-5 columna-redes-sociales">
-                <app-social></app-social>
-            </div>
+<!-- <router-outlet></router-outlet> -->
+
+<app-menu (menuToggled)="toggleMenu($event)"></app-menu>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <app-chat></app-chat>
+        </div>
+        <div class="col-md-5 columna-redes-sociales">
+            <app-social></app-social>
         </div>
     </div>
 </div>
-
-<!-- <app-player></app-player> -->

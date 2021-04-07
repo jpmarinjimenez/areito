@@ -32,6 +32,14 @@
     color: #dee2e6;
 }
 
+#player .info .title,
+#player .info .artist {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 175px;
+}
+
 #player .info-cover {
     display: inline-block;
 }
