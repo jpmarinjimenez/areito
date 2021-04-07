@@ -1,5 +1,25 @@
-<nav class="navbar">
-    <a class="navbar-brand" href="#">
+<nav role="navigation">
+    <div id="menuToggle">
+        <input type="checkbox" />
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <ul id="menu">
+            <a href="#"><li class="text-center"><img src="/assets/img/logotipo.png" height="20" class="img-fluid" alt="Logotipo Areito"></li></a>
+            <a href="#"><li>Chat</li></a>
+            <a href="#"><li>Redes sociales</li></a>
+            <a href="#"><li>Politica de cookies</li></a>
+            <a href="https://www.linkedin.com/in/juanpablomarinjimenez/" target="_blank" class="developer"><li>Developed by Juan Pablo Marín</li></a>
+        </ul>
+    </div>
+
+    <a class="logotipo" href="index.html">
         <img src="/assets/img/logotipo-blanco.png" height="40" alt="Logotipo Areito" />
     </a>
+
+    <div class="contenedor-player">
+        <app-player></app-player>
+    </div>
 </nav>
