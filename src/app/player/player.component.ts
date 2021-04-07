@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
 import { PlayerService } from "./player.service";
 
@@ -8,7 +8,7 @@ import { PlayerService } from "./player.service";
     styleUrls: ['./player.component.css']
 })
 
-export class PlayerComponent {
+export class PlayerComponent implements OnInit {
     audio;
     playing = false;
     DEFAULTDISKIMG = 'assets/img/areitodisco.png';
@@ -24,6 +24,10 @@ export class PlayerComponent {
     constructor(private playerService: PlayerService) {
         this.updateInfo();
         this.audio = new Audio('http://server2.ejeserver.com:8332/stream');
+    }
+
+    ngOnInit() {
+        this.play();
     }
 
     play = () => {
