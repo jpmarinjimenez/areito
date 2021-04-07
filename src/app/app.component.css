@@ -7,11 +7,6 @@
     margin-top: 25px;
 }
 
-.columna-redes-sociales .youtube,
-.columna-redes-sociales .facebook {
-    margin-top: 25px;
-}
-
 @media (min-width: 768px) {
     .columna-redes-sociales {
         text-align: right;
@@ -24,16 +19,5 @@
         padding-right: 10px;
         margin-bottom: 25px;
         text-align: center;
-    }
-
-    .columna-redes-sociales .instagram .contenedor-iframe {
-        width: 300px;
-        margin: auto;
-        overflow: hidden;
-        text-align: center;
-    }
-
-    .columna-redes-sociales .instagram .contenedor-iframe iframe {
-        margin-left: -11px;
     }
 }

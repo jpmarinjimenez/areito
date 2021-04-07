@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { MenuComponent } from "./menu/menu.component";
 import { ChatComponent } from "./chat/chat.component";
+import { SocialComponent } from "./social/social.component";
 import { PlayerComponent } from "./player/player.component";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -13,7 +14,7 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { environment } from "../environments/environment";
 
 @NgModule({
-    declarations: [AppComponent, MenuComponent,PlayerComponent, ChatComponent],
+    declarations: [AppComponent, MenuComponent,PlayerComponent, ChatComponent, SocialComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
