@@ -22,12 +22,12 @@ export class PlayerComponent implements OnInit {
     };
 
     constructor(private playerService: PlayerService) {
-        this.updateInfo();
         this.audio = new Audio('http://server2.ejeserver.com:8332/stream');
     }
 
     ngOnInit() {
         this.play();
+        this.updateInfo();
     }
 
     play = () => {
