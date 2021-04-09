@@ -4,17 +4,18 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 import { MenuComponent } from "./menu/menu.component";
-import { ChatComponent } from "./chat/chat.component";
-import { SocialComponent } from "./social/social.component";
+import { HomeComponent } from "./home/home.component";
+import { CarouselComponent } from "./carousel/carousel.component";
 import { PlayerComponent } from "./player/player.component";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ServiceWorkerModule } from "@angular/service-worker";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from "../environments/environment";
 
 @NgModule({
-    declarations: [AppComponent, MenuComponent,PlayerComponent, ChatComponent, SocialComponent],
+    declarations: [AppComponent, MenuComponent, PlayerComponent, HomeComponent, CarouselComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
@@ -25,6 +26,7 @@ import { environment } from "../environments/environment";
             // or after 30 seconds (whichever comes first).
             registrationStrategy: "registerWhenStable:30000",
         }),
+        NgbModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

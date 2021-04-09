@@ -1,0 +1,5 @@
+<ngb-carousel id="carousel">
+    <ng-template *ngFor="let imagen of imagenesCarousel" ngbSlide>
+        <div class="item" style="background-image: url({{imagen.url}});"></div>
+    </ng-template>
+</ngb-carousel>

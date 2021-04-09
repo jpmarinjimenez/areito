@@ -1,0 +1,13 @@
+ngb-carousel {
+    overflow: hidden;
+}
+
+ngb-carousel:focus {
+    outline: none;
+}
+
+#carousel .item {
+    min-height: calc(100vh - 70px) !important;
+    background-size: cover;
+    background-position: center;
+}
