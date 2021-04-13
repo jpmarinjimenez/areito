@@ -7,15 +7,15 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
     title = "areito";
-    menuOpen:boolean = false;
+    menuOpen: boolean = false;
 
     toggleMenu = (value: boolean) => {
         this.menuOpen = value;
 
         if (this.menuOpen) {
-            document.body.classList.add('menu-open');
+            document.body.classList.add("menu-open");
         } else {
-            document.body.classList.remove('menu-open');
+            document.body.classList.remove("menu-open");
         }
     };
 }
