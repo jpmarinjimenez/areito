@@ -31,7 +31,6 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-firebase.auth().languageCode = "es";
 
 @NgModule({
     declarations: [AppComponent, AuthComponent, MenuComponent, PlayerComponent, HomeComponent, CarouselComponent],
