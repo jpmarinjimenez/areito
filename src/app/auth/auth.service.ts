@@ -23,13 +23,13 @@ export class AuthService {
             .then((result) => {
                 const credential = result.credential as firebase.auth.OAuthCredential;
 
-                this.user = {
-                    isLoggedIn: true,
-                    accessToken: credential.accessToken,
-                    email: result.user.email,
-                    displayName: result.user.displayName,
-                    photoURL: result.user.photoURL
-                }
+                // this.user = {
+                //     isLoggedIn: true,
+                //     accessToken: credential.accessToken,
+                //     email: result.user.email,
+                //     displayName: result.user.displayName,
+                //     photoURL: result.user.photoURL
+                // }
 
                 console.log(this.user);
             })

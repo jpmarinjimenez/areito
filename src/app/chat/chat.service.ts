@@ -3,7 +3,6 @@ import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFireDatabase, AngularFireList } from "@angular/fire/database";
 import * as firebase from "firebase/app";
 import { Observable } from "rxjs";
-import { AuthService } from "../auth/auth.service";
 import { ChatMessage } from "../chat/chat-message.model";
 import { User } from "../models/user.model";
 
@@ -16,12 +15,14 @@ export class ChatService {
     chatMessage: ChatMessage;
     user: User;
 
-    constructor(private authService: AuthService, private db: AngularFireDatabase) {
-        // if (authService.user.isLoggedIn) {
-        //     this.user = authService.user;
-        // }
+    constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase) {
+        this.afAuth.authState.subscribe((auth) => {
+            if (auth !== undefined && auth !== null) {
+                this.user = auth;
+            }
+        });
 
-        this.chatMessagesRef = this.db.list("messages", ref => {
+        this.chatMessagesRef = this.db.list("messages", (ref) => {
             return ref.limitToLast(25).orderByKey();
         });
     }
@@ -33,11 +34,11 @@ export class ChatService {
         this.chatMessagesRef.push({
             message: message,
             timeSent: timeStamp,
-            displayName: this.user.displayName,
+            // username: this.user.username,
             email: this.user.email,
         });
 
-        console.log('Message pushed!');
+        console.log("Message pushed!");
     };
 
     getTimeStamp = () => {

@@ -21,6 +21,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 // Firebase
 import firebase from "firebase/app";
 import { AngularFireModule } from "@angular/fire";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [AppComponent, AuthComponent, MenuComponent, PlayerComponent, HomeComponent, CarouselComponent, ChatComponent, ChatFormComponent],
@@ -35,6 +36,7 @@ import { AngularFireModule } from "@angular/fire";
             registrationStrategy: "registerWhenStable:30000",
         }),
         NgbModule,
+        FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
     ],
     providers: [],
