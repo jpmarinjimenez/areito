@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment";
 import { PlayerService } from "./player.service";
 
 @Component({
@@ -26,7 +27,9 @@ export class PlayerComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.play();
+        if (environment.production) {
+            this.play();
+        }
         this.updateInfo();
     }
 

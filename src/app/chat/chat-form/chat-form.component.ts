@@ -16,9 +16,9 @@ export class ChatFormComponent {
         this.chatService.sendMessage(this.message);
     }
 
-    handleSubmit = (event: { keyCode: number; }) => {
-        if (event.keyCode === 13) {
-            this.send();
-        }
-    }
+    // handleSubmit = (event: { keyCode: number; }) => {
+    //     if (event.keyCode === 13) {
+    //         this.send();
+    //     }
+    // }
 }
