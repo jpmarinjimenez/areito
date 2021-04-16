@@ -1,6 +1,7 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
+import { FormsModule } from "@angular/forms";
 import { environment } from "../environments/environment";
 
 // Components
@@ -12,6 +13,7 @@ import { CarouselComponent } from "./carousel/carousel.component";
 import { PlayerComponent } from "./player/player.component";
 import { ChatComponent } from "./chat/chat.component";
 import { ChatFormComponent } from "./chat/chat-form/chat-form.component";
+import { ChatFeedComponent } from "./chat/chat-feed/chat-feed.component";
 
 // Modules
 import { AppRoutingModule } from "./app-routing.module";
@@ -21,10 +23,19 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 // Firebase
 import firebase from "firebase/app";
 import { AngularFireModule } from "@angular/fire";
-import { FormsModule } from "@angular/forms";
 
 @NgModule({
-    declarations: [AppComponent, AuthComponent, MenuComponent, PlayerComponent, HomeComponent, CarouselComponent, ChatComponent, ChatFormComponent],
+    declarations: [
+        AppComponent,
+        AuthComponent,
+        MenuComponent,
+        PlayerComponent,
+        HomeComponent,
+        CarouselComponent,
+        ChatComponent,
+        ChatFormComponent,
+        ChatFeedComponent,
+    ],
     imports: [
         BrowserModule,
         AppRoutingModule,

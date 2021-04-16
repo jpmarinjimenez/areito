@@ -41,6 +41,10 @@ export class ChatService {
         console.log("Message pushed!");
     };
 
+    getMessages(): Observable<any[]> {
+        return this.chatMessagesRef.valueChanges();
+    }
+
     getTimeStamp = () => {
         const now = new Date();
         const date = now.getUTCFullYear() + "/" + (now.getUTCMonth() + 1) + "/" + now.getUTCDate();
