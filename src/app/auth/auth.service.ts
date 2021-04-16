@@ -1,14 +1,7 @@
 import { Injectable } from "@angular/core";
 import firebase from "firebase/app";
 import "firebase/auth";
-
-interface User {
-    isLoggedIn: boolean,
-    accessToken?: string,
-    email: string,
-    displayName: string,
-    photoURL?: string,       
-}
+import { User } from '../models/user.model';
 
 @Injectable({
     providedIn: "root",

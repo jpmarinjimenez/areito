@@ -1,9 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { ChatComponent } from "./chat/chat.component";
 
-import { ChatIframeComponent } from "./chatIframe/chatIframe.component";
 import { HomeComponent } from "./home/home.component";
+import { ChatIframeComponent } from "./chatIframe/chatIframe.component";
+import { ChatComponent } from "./chat/chat.component";
 import { SocialComponent } from "./social/social.component";
 
 const routes: Routes = [
