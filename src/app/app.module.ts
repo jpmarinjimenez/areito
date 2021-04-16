@@ -10,6 +10,8 @@ import { MenuComponent } from "./menu/menu.component";
 import { HomeComponent } from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import { PlayerComponent } from "./player/player.component";
+import { ChatComponent } from "./chat/chat.component";
+import { ChatFormComponent } from "./chat/chat-form/chat-form.component";
 
 // Modules
 import { AppRoutingModule } from "./app-routing.module";
@@ -33,7 +35,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 @NgModule({
-    declarations: [AppComponent, AuthComponent, MenuComponent, PlayerComponent, HomeComponent, CarouselComponent],
+    declarations: [AppComponent, AuthComponent, MenuComponent, PlayerComponent, HomeComponent, CarouselComponent, ChatComponent, ChatFormComponent],
     imports: [
         BrowserModule,
         AppRoutingModule,
