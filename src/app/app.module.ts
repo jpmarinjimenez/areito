@@ -11,9 +11,12 @@ import { MenuComponent } from "./menu/menu.component";
 import { HomeComponent } from "./home/home.component";
 import { CarouselComponent } from "./carousel/carousel.component";
 import { PlayerComponent } from "./player/player.component";
+
+// Chat
 import { ChatComponent } from "./chat/chat.component";
 import { ChatFormComponent } from "./chat/chat-form/chat-form.component";
 import { ChatFeedComponent } from "./chat/chat-feed/chat-feed.component";
+import { ChatMessageComponent } from "./chat/chat-message/chat-message.component";
 
 // Modules
 import { AppRoutingModule } from "./app-routing.module";
@@ -35,6 +38,7 @@ import { AngularFireModule } from "@angular/fire";
         ChatComponent,
         ChatFormComponent,
         ChatFeedComponent,
+        ChatMessageComponent
     ],
     imports: [
         BrowserModule,

@@ -37,8 +37,6 @@ export class ChatService {
             // username: this.user.username,
             email: this.user.email,
         });
-
-        console.log("Message pushed!");
     };
 
     getMessages(): Observable<any[]> {
