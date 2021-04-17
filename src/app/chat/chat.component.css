@@ -38,28 +38,30 @@ chat-form {
 
 .mainContent {
     display: flex;
+    background-image: url("/assets/carousel/hector-lavoe.jpg");
+    background-size: cover;
+    background-position: center;
+    max-height: calc(100vh - 120px) !important;
+    overflow: hidden;
 }
 
 .userListWrapper {
-    background-color: #2a2845;
+    background-color: ##00000099;
     color: #fff;
     display: flex;
-    font-family: "Open Sans", sans-serif;
     font-size: 1.2em;
     flex: 1;
     order: 1;
     padding: 20px 0px 40px 30px;
     border-right: 1px solid #222;
+    min-height: calc(100vh - 120px) !important;
 }
 
 .feedWrapper {
-    background-color: #fff;
-    /* background: linear-gradient(181deg, rgba(100, 200, 255, 0.6), rgba(0, 0, 0, 0.9)),
-        url("../../assets/img/chat-bg-1.png") center center no-repeat; */
-    font-family: "Open Sans", sans-serif;
     font-size: 1.2em;
     flex: 5;
     order: 2;
+    max-height: calc(100vh - 120px) !important;
     overflow-y: scroll;
     padding: 20px 0px 0px 24px;
 }
@@ -76,6 +78,6 @@ chat-form {
     background-color: #f5f5f5;
 }
 
-user-list {
+chat-users-list {
     width: 100%;
 }

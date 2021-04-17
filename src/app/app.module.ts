@@ -17,6 +17,7 @@ import { ChatComponent } from "./chat/chat.component";
 import { ChatFormComponent } from "./chat/chat-form/chat-form.component";
 import { ChatFeedComponent } from "./chat/chat-feed/chat-feed.component";
 import { ChatMessageComponent } from "./chat/chat-message/chat-message.component";
+import { ChatUsersListComponent } from "./chat/chat-users-list/chat-users-list.component";
 
 // Modules
 import { AppRoutingModule } from "./app-routing.module";
@@ -38,7 +39,8 @@ import { AngularFireModule } from "@angular/fire";
         ChatComponent,
         ChatFormComponent,
         ChatFeedComponent,
-        ChatMessageComponent
+        ChatMessageComponent,
+        ChatUsersListComponent
     ],
     imports: [
         BrowserModule,
