@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import { Component } from "@angular/core";
 
 @Component({
     selector: "app-menu",
@@ -6,12 +6,17 @@ import { Component, Output, EventEmitter } from "@angular/core";
     styleUrls: ["./menu.component.css"],
 })
 export class MenuComponent {
-    @Output() menuToggled = new EventEmitter<boolean>();
-
     menuOpen: boolean = false;
+
+    constructor() {}
 
     toggleMenu = () => {
         this.menuOpen = !this.menuOpen;
-        this.menuToggled.emit(this.menuOpen);
+        
+        if (this.menuOpen) {
+            document.body.classList.add("menu-open");
+        } else {
+            document.body.classList.remove("menu-open");
+        }
     };
 }
