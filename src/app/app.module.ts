@@ -25,8 +25,11 @@ import { ServiceWorkerModule } from "@angular/service-worker";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 // Firebase
-import firebase from "firebase/app";
-import { AngularFireModule } from "@angular/fire";
+// import firebase from "firebase/app";
+// firebase.initializeApp(environment.firebase);
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+
 
 @NgModule({
     declarations: [
@@ -55,6 +58,7 @@ import { AngularFireModule } from "@angular/fire";
         NgbModule,
         FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
     ],
     providers: [],
     bootstrap: [AppComponent],
