@@ -11,26 +11,6 @@ export class AuthService {
 
     constructor(private firebaseService: FirebaseService) {}
 
-    // Email
-    login(email: string, password: string) {
-        // return this.afAuth.auth.signInWithEmailAndPassword(email, password).then((user) => {
-        //     this.authState = user;
-        //     this.setUserStatus("online");
-        //     this.router.navigate(["chat"]);
-        // });
-    }
-
-    signUp(email: string, password: string, displayName: string) {
-        // return this.afAuth.auth
-        //     .createUserWithEmailAndPassword(email, password)
-        //     .then((user) => {
-        //         this.authState = user;
-        //         const status = "online";
-        //         this.setUserData(email, displayName, status);
-        //     })
-        //     .catch((error) => console.log(error));
-    }
-
     // Facebook
     facebookSignInPopup() {
         firebase

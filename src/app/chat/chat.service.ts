@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { ChatMessage } from '../chat/chat-message.model';
@@ -8,19 +8,21 @@ import { FirebaseService } from '../services/firebase.service';
 @Injectable({
     providedIn: 'root',
 })
-export class ChatService {
+export class ChatService implements OnInit {
     chatMessagesRef: AngularFireList<any>;
     chatMessages: Observable<any[]>;
     chatMessage: ChatMessage;
     user: User;
 
     constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService) {
-        this.firebaseService.getUserData().subscribe((user) => {
-            this.user = user;
-        });
-
         this.chatMessagesRef = this.db.list('messages', (ref) => {
             return ref.limitToLast(25).orderByKey();
+        });
+    }
+
+    ngOnInit() {
+        this.firebaseService.getUserData().subscribe((user) => {
+            this.user = user;
         });
     }
 
