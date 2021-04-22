@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import { FirebaseService } from '../services/firebase.service';
@@ -9,7 +10,7 @@ import { FirebaseService } from '../services/firebase.service';
 export class AuthService {
     provider = new firebase.auth.FacebookAuthProvider();
 
-    constructor(private firebaseService: FirebaseService) {}
+    constructor(private firebaseService: FirebaseService, private router: Router) {}
 
     // Facebook
     facebookSignInPopup() {
@@ -29,6 +30,8 @@ export class AuthService {
                         this.firebaseService.setUserData(user, result.user.uid);
                     }
                 });
+
+                this.router.navigate(['/chat']);
             })
             .catch((error) => {
                 // Handle Errors here.
@@ -41,5 +44,10 @@ export class AuthService {
 
                 // ...
             });
+    }
+
+    // Logout
+    logout() {
+        return firebase.auth().signOut();
     }
 }
