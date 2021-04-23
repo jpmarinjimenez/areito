@@ -1,7 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/auth.service';
 import { ChatMessage } from '../chat/chat-message.model';
 import { User } from '../models/user.model';
 import { FirebaseService } from '../services/firebase.service';
@@ -9,21 +8,22 @@ import { FirebaseService } from '../services/firebase.service';
 @Injectable({
     providedIn: 'root',
 })
-export class ChatService implements OnInit {
+export class ChatService {
     chatMessagesRef: AngularFireList<any>;
     chatMessages: Observable<any[]>;
     chatMessage: ChatMessage;
     user: User;
 
-    constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService, private authService: AuthService) {
-        this.chatMessagesRef = this.db.list('messages', (ref) => {
-            return ref.limitToLast(25).orderByKey();
-        });
-    }
-
-    ngOnInit() {
+    constructor(
+        private db: AngularFireDatabase,
+        private firebaseService: FirebaseService
+    ) {
         this.firebaseService.getUserData().subscribe((user) => {
             this.user = user;
+        });
+
+        this.chatMessagesRef = this.db.list('messages', (ref) => {
+            return ref.limitToLast(25).orderByKey();
         });
     }
 
@@ -32,7 +32,7 @@ export class ChatService implements OnInit {
         this.chatMessagesRef.push({
             message: message,
             timeSent: timeStamp,
-            // username: this.user.username,
+            displayName: this.user.displayName,
             email: this.user.email,
         });
     };

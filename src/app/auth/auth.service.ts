@@ -21,21 +21,18 @@ export class AuthService {
             .auth()
             .signInWithPopup(this.provider)
             .then((result) => {
-                // const credential = result.credential as firebase.auth.OAuthCredential;
                 const user = {
                     email: result.user.email,
-                    displayName: 'Prueba',
+                    displayName: result.user.displayName,
                     status: 'online',
                 };
 
-                this.firebaseService.getUserData().subscribe((userData) => {
-                    if (!userData) {
-                        this.firebaseService.setUserData(user, result.user.uid);
-                    }
-                });
-
-                this.router.navigate(['/chat']);
+                if (result.additionalUserInfo.isNewUser) {
+                    this.firebaseService.setUserData(user, result.user.uid);
+                }
+                
                 this.user.next(user);
+                this.router.navigate(['/chat']);
             })
             .catch((error) => console.log(error));
     }

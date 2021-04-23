@@ -7,9 +7,10 @@ import { AuthService } from './auth.service';
     styleUrls: ['auth.component.css'],
 })
 export class AuthComponent {
+
     constructor(private authService: AuthService) {}
 
-    facebookSignInPopup = () => {
+    facebookSignInPopup(): void {
         this.authService.facebookSignInPopup();
-    };
+    }
 }
