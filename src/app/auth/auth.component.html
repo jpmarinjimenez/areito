@@ -1,6 +1,6 @@
 <div class="auth-container">
-    <div class="content left">
-        <!-- Login -->
+    <!-- Login -->
+    <div class="content" [ngClass]="{left: loginMode, right: !loginMode}">
         <div *ngIf="loginMode" class="wrapper">
             <h2 class="text-center">Iniciar sesión</h2>
     
@@ -48,7 +48,7 @@
                 <button type="button" class="btn btn-success btn-block">Registrarse</button>
             </div>
         
-            <div class="form-group">
+            <div class="form-group text-center">
                 <a role="button" (click)="facebookSignInPopup()" class="fb connect">Iniciar sesión con Facebook</a>
             </div>
         

@@ -1,27 +1,41 @@
 .auth-container {
     min-height: calc(100vh - 70px);
     background-image: url(../../assets/backgrounds/login-bg.jpg);
-    background-position: right;
+    background-position: center;
     background-size: cover;
 }
 
 .auth-container .content {
-    background-color: #EEE;
+    background-color: #eee;
     width: 50%;
     min-height: calc(100vh - 70px);
+    position: absolute;
+    transition: all 1s ease;
 }
 
 .auth-container .content.left {
-    float: left;
+    left: 0;
+}
+
+.auth-container .content.right {
+    left: 100%;
+    transform: translate(-100%, 0);
 }
 
 .auth-container .content .wrapper {
     padding-top: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
     max-width: 480px;
     margin: auto;
 }
 
-@media(max-width: 767px) {
+@media (max-width: 767px) {
+    .auth-container .content {
+        width: 100%;
+        transition: none;
+    }
+
     .auth-container .content .wrapper {
         padding-top: 25px;
     }
@@ -29,16 +43,15 @@
 
 /* ================ */
 
-
 /* ================ */
 a.fb {
     font-family: Lucida Grande, Helvetica Neue, Helvetica, Arial, sans-serif;
     display: inline-block;
     font-size: 14px;
     padding: 13px 30px 15px 44px;
-    background: #3A5A97;
+    background: #3a5a97;
     color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,20,.4);
+    text-shadow: 0 -1px 0 rgba(0, 0, 20, 0.4);
     text-decoration: none;
     line-height: 1;
     position: relative;
@@ -59,5 +72,5 @@ a.fb {
     line-height: 23px;
     margin: -8px 7px -7px -30px;
     padding: 2 25px 0 0;
-    content: "f";
+    content: 'f';
 }
