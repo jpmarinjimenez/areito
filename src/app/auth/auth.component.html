@@ -1,3 +1,58 @@
-<div class="contenedor-login">
-    <a role="button" (click)="facebookSignInPopup()" class="fb connect">Iniciar sesión con Facebook</a>
+<div class="auth-container">
+    <div class="content left">
+        <!-- Login -->
+        <div *ngIf="loginMode" class="wrapper">
+            <h2 class="text-center">Iniciar sesión</h2>
+    
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" class="form-control" placeholder="Introduce tu correo electrónico">
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" class="form-control" placeholder="Introduce tu contraseña">
+            </div>
+    
+            <div class="form-group text-center">
+                <button type="button" class="btn btn-success btn-block">Iniciar sesión</button>
+            </div>
+    
+            <div class="form-group text-center">
+                <a role="button" (click)="facebookSignInPopup()" class="fb connect">Iniciar sesión con Facebook</a>
+            </div>
+    
+            <p class="text-center"><a role="button" (click)="changeMode()">¿No tienes una cuenta? Registrate!</a></p>
+        </div>
+
+        <!-- Register -->
+        <div *ngIf="!loginMode" class="wrapper">
+            <h2 class="text-center">Registro</h2>
+        
+            <div class="form-group">
+                <label for="display-name">Nombre</label>
+                <input type="text" id="display-name" class="form-control" placeholder="Introduce tu nombre">
+            </div>
+        
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" class="form-control" placeholder="Introduce tu correo electrónico">
+            </div>
+        
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" class="form-control" placeholder="Introduce tu contraseña">
+            </div>
+        
+            <div class="form-group">
+                <button type="button" class="btn btn-success btn-block">Registrarse</button>
+            </div>
+        
+            <div class="form-group">
+                <a role="button" (click)="facebookSignInPopup()" class="fb connect">Iniciar sesión con Facebook</a>
+            </div>
+        
+            <p class="text-center"><a role="button" (click)="changeMode()">¿Ya tienes una cuenta? Inicia sesión!</a></p>
+        </div>
+    </div>
 </div>

@@ -7,10 +7,15 @@ import { AuthService } from './auth.service';
     styleUrls: ['auth.component.css'],
 })
 export class AuthComponent {
+    loginMode = true;
 
     constructor(private authService: AuthService) {}
 
     facebookSignInPopup(): void {
         this.authService.facebookSignInPopup();
+    }
+
+    changeMode () {
+        this.loginMode = !this.loginMode;
     }
 }

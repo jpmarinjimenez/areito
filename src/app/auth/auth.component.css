@@ -1,10 +1,36 @@
-.contenedor-login {
-    background-color: #ffffff8a;
-    padding: 50px 25px;
-    border-radius: 10px;
+.auth-container {
+    min-height: calc(100vh - 70px);
+    background-image: url(../../assets/backgrounds/login-bg.jpg);
+    background-position: right;
+    background-size: cover;
 }
 
+.auth-container .content {
+    background-color: #EEE;
+    width: 50%;
+    min-height: calc(100vh - 70px);
+}
 
+.auth-container .content.left {
+    float: left;
+}
+
+.auth-container .content .wrapper {
+    padding-top: 100px;
+    max-width: 480px;
+    margin: auto;
+}
+
+@media(max-width: 767px) {
+    .auth-container .content .wrapper {
+        padding-top: 25px;
+    }
+}
+
+/* ================ */
+
+
+/* ================ */
 a.fb {
     font-family: Lucida Grande, Helvetica Neue, Helvetica, Arial, sans-serif;
     display: inline-block;
@@ -17,6 +43,7 @@ a.fb {
     line-height: 1;
     position: relative;
     border-radius: 5px;
+    min-width: 100%;
 }
 
 .connect:before {
