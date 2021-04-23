@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, AfterViewChecked } from "@angular/core";
+import { Component, OnInit, OnChanges } from "@angular/core";
 import { ChatService } from "../chat.service";
 import { Observable } from "rxjs";
 
@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
     templateUrl: "chat-feed.component.html",
     styleUrls: ["chat-feed.component.css"],
 })
-export class ChatFeedComponent implements OnInit, OnChanges, AfterViewChecked {
+export class ChatFeedComponent implements OnInit, OnChanges {
     feed: Observable<any[]>;
 
     constructor(private chatService: ChatService) {}
@@ -18,15 +18,5 @@ export class ChatFeedComponent implements OnInit, OnChanges, AfterViewChecked {
 
     ngOnChanges() {
         this.feed = this.chatService.getMessages();
-        this.scrollDownFeed();
-    }
-
-    ngAfterViewChecked() {
-        this.scrollDownFeed();
-    }
-
-    scrollDownFeed = () => {
-        const feedEl = <HTMLElement> document.querySelector('.feedWrapper');
-        feedEl.scrollTop = feedEl.scrollHeight;
     }
 }
