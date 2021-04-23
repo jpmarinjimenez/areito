@@ -14,10 +14,7 @@ export class ChatService {
     chatMessage: ChatMessage;
     user: User;
 
-    constructor(
-        private db: AngularFireDatabase,
-        private firebaseService: FirebaseService
-    ) {
+    constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService) {
         this.firebaseService.getUserData().subscribe((user) => {
             this.user = user;
         });
@@ -48,4 +45,9 @@ export class ChatService {
 
         return date + ' ' + time;
     };
+
+    getUsers() {
+        const path = '/users';
+        return this.db.list(path).valueChanges();
+    }
 }

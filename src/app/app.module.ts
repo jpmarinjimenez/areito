@@ -18,6 +18,7 @@ import { ChatFormComponent } from "./chat/chat-form/chat-form.component";
 import { ChatFeedComponent } from "./chat/chat-feed/chat-feed.component";
 import { ChatMessageComponent } from "./chat/chat-message/chat-message.component";
 import { ChatUsersListComponent } from "./chat/chat-users-list/chat-users-list.component";
+import { ChatUserItemComponent } from "./chat/chat-user-item/chat-user-item.component";
 
 // Modules
 import { AppRoutingModule } from "./app-routing.module";
@@ -43,7 +44,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
         ChatFormComponent,
         ChatFeedComponent,
         ChatMessageComponent,
-        ChatUsersListComponent
+        ChatUsersListComponent,
+        ChatUserItemComponent
     ],
     imports: [
         BrowserModule,
