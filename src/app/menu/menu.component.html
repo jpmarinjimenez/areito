@@ -7,17 +7,25 @@
         <span></span>
         
         <ul id="menu">
-            <a routerLink="/" (click)="toggleMenu()"><li class="text-center"><img src="/assets/img/logotipo.png" height="20" class="img-fluid" alt="Logotipo Areito"></li></a>
-            <!-- <a routerLink="chat-iframe" (click)="toggleMenu()"><li>Chat</li></a> -->
-            <a routerLink="chat" (click)="toggleMenu()" *ngIf="userLoggedIn"><li>Chat</li></a>
-            <!-- <a routerLink="social" (click)="toggleMenu()"><li>Redes sociales</li></a> -->
-            <a role="button" (click)="toggleMenu()"><li>Politica de cookies</li></a>
-            <a role="button" (click)="logout()" *ngIf="userLoggedIn"><li>Cerrar sesión</li></a>
-            <a href="https://www.linkedin.com/in/juanpablomarinjimenez/" target="_blank" class="developer"><li>Developed by Juan Pablo Marín</li></a>
+            <a routerLink="/" (click)="toggleMenu()">
+                <li class="text-center"><img src="/assets/img/logotipo.png" height="20" class="img-fluid" alt="Logotipo Areito"></li>
+            </a>
+            <a [routerLink]="['/chat']" routerLinkActive="active"  (click)="toggleMenu()" *ngIf="userLoggedIn">
+                <li>Chat</li>
+            </a>
+            <a role="button" (click)="toggleMenu()">
+                <li>Politica de cookies</li>
+            </a>
+            <a role="button" (click)="logout()" *ngIf="userLoggedIn">
+                <li>Cerrar sesión</li>
+            </a>
+            <a href="https://www.linkedin.com/in/juanpablomarinjimenez/" target="_blank" class="developer">
+                <li>Developed by Juan Pablo Marín</li>
+            </a>
         </ul>
     </div>
 
-    <a class="logotipo" href="index.html">
+    <a class="logotipo" routerLink="/">
         <img src="/assets/img/logotipo-blanco.png" height="40" alt="Logotipo Areito" />
     </a>
 
