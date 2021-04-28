@@ -37,6 +37,16 @@ export class AuthService {
             .catch((error) => console.log(error));
     }
 
+    login(form: any): void {
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(form.email, form.password)
+            .then(() => {
+                this.handleAuthentication();
+            })
+            .catch((error) => console.log(error));
+    }
+
     // Facebook
     facebookSignInPopup() {
         firebase
@@ -49,7 +59,7 @@ export class AuthService {
     }
 
     // Handle succesfull authentication
-    handleAuthentication(displayName?:string) {
+    handleAuthentication(displayName?: string) {
         const user = firebase.auth().currentUser;
 
         if (displayName) {
@@ -73,5 +83,11 @@ export class AuthService {
     logout() {
         this.user.next(null);
         return firebase.auth().signOut();
+    }
+
+    getUser() {
+        const user = firebase.auth().currentUser;
+        this.user.next(user);
+        return user;
     }
 }

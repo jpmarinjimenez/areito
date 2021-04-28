@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { ChatMessage } from '../chat/chat-message.model';
 import { User } from '../models/user.model';
 import { FirebaseService } from '../services/firebase.service';
@@ -14,10 +15,8 @@ export class ChatService {
     chatMessage: ChatMessage;
     user: User;
 
-    constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService) {
-        this.firebaseService.getUserData().subscribe((user) => {
-            this.user = user;
-        });
+    constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService, private authService: AuthService) {
+        this.user = this.authService.getUser();
 
         this.chatMessagesRef = this.db.list('messages', (ref) => {
             return ref.limitToLast(25).orderByKey();

@@ -22,7 +22,13 @@ export class AuthComponent {
         this.loginMode = !this.loginMode;
     }
 
-    login(form: NgForm): void {}
+    login(form: NgForm): void {
+        if (!form.valid) {
+            return;
+        }
+
+        this.authService.login(form.value);
+    }
 
     register(form: NgForm): void {
         if (!form.valid) {
