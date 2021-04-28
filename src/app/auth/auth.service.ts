@@ -21,7 +21,7 @@ export interface AuthResponseData {
     providedIn: 'root',
 })
 export class AuthService {
-    user = new BehaviorSubject<User>(null);
+    user = new BehaviorSubject<firebase.User>(null);
     provider = new firebase.auth.FacebookAuthProvider();
 
     constructor(private firebaseService: FirebaseService, private router: Router, private http: HttpClient) {}
@@ -32,6 +32,7 @@ export class AuthService {
             .auth()
             .createUserWithEmailAndPassword(form.email, form.password)
             .then(() => {
+                console.log(form);
                 this.handleAuthentication(form.displayName);
             })
             .catch((error) => console.log(error));
@@ -77,6 +78,14 @@ export class AuthService {
             this.user.next(user);
             this.router.navigate(['chat']);
         }
+
+        const basicUser: User = {
+            email: user.email,
+            displayName: user.displayName,
+            status: 'online',
+        }
+
+        this.firebaseService.setUserData(basicUser, user.uid);
     }
 
     // Logout

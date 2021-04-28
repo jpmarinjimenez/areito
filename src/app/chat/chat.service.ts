@@ -3,8 +3,9 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { ChatMessage } from '../chat/chat-message.model';
-import { User } from '../models/user.model';
+import firebase from 'firebase/app';
 import { FirebaseService } from '../services/firebase.service';
+import { User } from '../models/user.model';
 
 @Injectable({
     providedIn: 'root',
@@ -13,7 +14,7 @@ export class ChatService {
     chatMessagesRef: AngularFireList<any>;
     chatMessages: Observable<any[]>;
     chatMessage: ChatMessage;
-    user: User;
+    user: firebase.User;
 
     constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService, private authService: AuthService) {
         this.user = this.authService.getUser();
@@ -30,6 +31,7 @@ export class ChatService {
             timeSent: timeStamp,
             displayName: this.user.displayName,
             email: this.user.email,
+            uid: this.user.uid,
         });
     };
 

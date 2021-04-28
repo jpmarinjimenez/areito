@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { User } from '../../models/user.model';
 import { ChatService } from '../chat.service';
 
@@ -8,7 +8,7 @@ import { ChatService } from '../chat.service';
     styleUrls: ['chat-users-list.component.css'],
 })
 export class ChatUsersListComponent {
-    users: User[];
+    users: any[];
 
     constructor(chat: ChatService) {
         chat.getUsers().subscribe((users) => {
