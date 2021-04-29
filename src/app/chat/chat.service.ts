@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { ChatMessage } from '../chat/chat-message.model';
 import firebase from 'firebase/app';
-import { User } from '../models/user.model';
 import { FirebaseService } from '../services/firebase.service';
 
 @Injectable({

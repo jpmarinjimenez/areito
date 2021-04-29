@@ -26,6 +26,7 @@ export class AuthService implements OnDestroy {
     constructor(private firebaseService: FirebaseService, private router: Router) {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
+                this.firebaseService.setUserOnline(user.uid);
                 this.user.next(user);
             } else {
                 this.user.next(null);
@@ -76,8 +77,17 @@ export class AuthService implements OnDestroy {
             await user.updateProfile({
                 displayName: displayName,
             }).catch((error) => console.log(error));
+
+            const basicUser: User = {
+                email: user.email,
+                displayName: user.displayName,
+                status: 'online',
+            };
+
+            await this.firebaseService.setUserData(basicUser, user.uid);
         }
 
+        this.firebaseService.setUserOnline(user.uid);
         this.user.next(user);
     }
 
@@ -93,7 +103,7 @@ export class AuthService implements OnDestroy {
 
             await this.firebaseService.setUserData(basicUser, user.uid);
         }
-
+        this.firebaseService.setUserOnline(user.uid);
         this.user.next(user);
     }
 

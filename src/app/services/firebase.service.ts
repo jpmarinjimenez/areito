@@ -10,32 +10,32 @@ import { User } from '../models/user.model';
 export class FirebaseService {
     constructor(public db: AngularFireDatabase) {}
 
-    setUserData(user: User, uid: string) {
-        this.db
+    async setUserData(user: User, uid: string) {
+        await this.db
             .object('users/' + uid)
             .set(user)
             .catch((error) => console.log(error));
     }
 
-    setUserOnline(uid: string) {
-        this.db
+    async setUserOnline(uid: string) {
+        var ref = firebase.database().ref('users/' + uid);
+        await this.db
             .object('users/' + uid)
             .update({
                 status: 'online',
             })
             .catch((error) => console.log(error));
 
-        // this.db.database
-        //     .refFromURL('users/' + uid)
-        //     .onDisconnect()
-        //     .update({
-        //         status: 'offline',
-        //     })
-        //     .catch((error) => console.log(error));
+        await ref
+            .onDisconnect()
+            .update({
+                status: 'offline',
+            })
+            .catch((error) => console.log(error));
     }
 
-    setUserOffline(uid: string) {
-        this.db
+    async setUserOffline(uid: string) {
+        await this.db
             .object('users/' + uid)
             .update({
                 status: 'offline',
