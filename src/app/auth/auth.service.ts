@@ -26,7 +26,9 @@ export class AuthService implements OnDestroy {
     constructor(private firebaseService: FirebaseService, private router: Router) {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
-                this.handleAuthentication();
+                this.user.next(user);
+            } else {
+                this.user.next(null);
             }
         });
     }
@@ -37,8 +39,8 @@ export class AuthService implements OnDestroy {
             .auth()
             .createUserWithEmailAndPassword(form.email, form.password)
             .then(() => {
-                console.log(form);
-                this.handleAuthentication(form.displayName);
+                this.handleAuthenticationEmail(form.displayName);
+                this.router.navigate(['chat']);
             })
             .catch((error) => console.log(error));
     }
@@ -48,7 +50,8 @@ export class AuthService implements OnDestroy {
             .auth()
             .signInWithEmailAndPassword(form.email, form.password)
             .then(() => {
-                this.handleAuthentication();
+                this.handleAuthenticationEmail();
+                this.router.navigate(['chat']);
             })
             .catch((error) => console.log(error));
     }
@@ -58,39 +61,40 @@ export class AuthService implements OnDestroy {
         firebase
             .auth()
             .signInWithPopup(this.provider)
-            .then(() => {
-                this.handleAuthentication();
+            .then((response) => {
+                this.handleAuthenticationFacebook(response);
+                this.router.navigate(['chat']);
             })
             .catch((error) => console.log(error));
     }
 
     // Handle succesfull authentication
-    handleAuthentication(displayName?: string) {
+    async handleAuthenticationEmail(displayName?: string) {
         const user = firebase.auth().currentUser;
 
         if (displayName) {
-            // if login via email
-            user.updateProfile({
+            await user.updateProfile({
                 displayName: displayName,
-            })
-                .then(() => {
-                    this.user.next(user);
-                    this.router.navigate(['chat']);
-                })
-                .catch((error) => console.log(error));
-        } else {
-            // if login via Facebook
-            this.user.next(user);
-            this.router.navigate(['chat']);
+            }).catch((error) => console.log(error));
         }
 
-        const basicUser: User = {
-            email: user.email,
-            displayName: user.displayName,
-            status: 'online',
-        };
+        this.user.next(user);
+    }
 
-        this.firebaseService.setUserData(basicUser, user.uid);
+    async handleAuthenticationFacebook(response: firebase.auth.UserCredential) {
+        const user = firebase.auth().currentUser;
+
+        if (response.additionalUserInfo.isNewUser) {
+            const basicUser: User = {
+                email: user.email,
+                displayName: user.displayName,
+                status: 'online',
+            };
+
+            await this.firebaseService.setUserData(basicUser, user.uid);
+        }
+
+        this.user.next(user);
     }
 
     // Get logged in user

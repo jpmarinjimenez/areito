@@ -1,12 +1,14 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { AuthService } from "../../auth/auth.service";
-import { ChatMessage } from "../../models/chat-message.model";
+import { Component, OnInit, Input } from '@angular/core';
+import { AuthService } from '../../auth/auth.service';
+import { ChatMessage } from '../../models/chat-message.model';
 import firebase from 'firebase/app';
+import { FirebaseService } from 'src/app/services/firebase.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
-    selector: "chat-message",
-    templateUrl: "chat-message.component.html",
-    styleUrls: ["chat-message.component.css"],
+    selector: 'chat-message',
+    templateUrl: 'chat-message.component.html',
+    styleUrls: ['chat-message.component.css'],
 })
 export class ChatMessageComponent implements OnInit {
     @Input() chatMessage: ChatMessage;
@@ -17,11 +19,7 @@ export class ChatMessageComponent implements OnInit {
     isOwnMessage: boolean;
     uid: string;
 
-    user: firebase.User;
-
-    constructor(private authService: AuthService) {
-        this.user = this.authService.getUser();
-    }
+    constructor() {}
 
     ngOnInit(chatMessage = this.chatMessage) {
         this.messageContent = chatMessage.message;

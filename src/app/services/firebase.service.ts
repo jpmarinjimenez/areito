@@ -25,13 +25,13 @@ export class FirebaseService {
             })
             .catch((error) => console.log(error));
 
-        this.db.database
-            .refFromURL('users/' + uid)
-            .onDisconnect()
-            .update({
-                status: 'offline',
-            })
-            .catch((error) => console.log(error));
+        // this.db.database
+        //     .refFromURL('users/' + uid)
+        //     .onDisconnect()
+        //     .update({
+        //         status: 'offline',
+        //     })
+        //     .catch((error) => console.log(error));
     }
 
     setUserOffline(uid: string) {
