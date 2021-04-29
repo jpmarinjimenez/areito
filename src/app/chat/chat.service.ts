@@ -1,27 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { ChatMessage } from '../chat/chat-message.model';
 import firebase from 'firebase/app';
-import { FirebaseService } from '../services/firebase.service';
-import { User } from '../models/user.model';
 
 @Injectable({
     providedIn: 'root',
 })
-export class ChatService {
+export class ChatService implements OnDestroy {
     chatMessagesRef: AngularFireList<any>;
     chatMessages: Observable<any[]>;
     chatMessage: ChatMessage;
     user: firebase.User;
 
-    constructor(private db: AngularFireDatabase, private firebaseService: FirebaseService, private authService: AuthService) {
-        this.user = this.authService.getUser();
+    constructor(private db: AngularFireDatabase, private authService: AuthService) {
+        this.authService.user.subscribe(user => {
+            this.user = user;
+        });
 
         this.chatMessagesRef = this.db.list('messages', (ref) => {
             return ref.limitToLast(25).orderByKey();
         });
+    }
+
+    ngOnDestroy() {
+        this.authService.user.unsubscribe();
     }
 
     sendMessage = (message: string) => {
@@ -47,7 +51,7 @@ export class ChatService {
         return date + ' ' + time;
     };
 
-    getUsers() {
+    getUsers(): Observable<unknown[]> {
         const path = '/users';
         return this.db.list(path).valueChanges();
     }

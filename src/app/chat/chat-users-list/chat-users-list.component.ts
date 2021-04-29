@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from '../../models/user.model';
 import { ChatService } from '../chat.service';
 
 @Component({
@@ -10,8 +9,8 @@ import { ChatService } from '../chat.service';
 export class ChatUsersListComponent {
     users: any[];
 
-    constructor(chat: ChatService) {
-        chat.getUsers().subscribe((users) => {
+    constructor(private chatService: ChatService) {
+        this.chatService.getUsers().subscribe((users) => {
             this.users = users;
         });
     }

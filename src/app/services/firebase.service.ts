@@ -17,6 +17,18 @@ export class FirebaseService {
             .catch((error) => console.log(error));
     }
 
+    setUserOnline(uid: string) {
+        this.db.object('users/' + uid).update({
+            status: 'online'
+        }).catch((error) => console.log(error));
+    }
+
+    setUserOffline(uid: string) {
+        this.db.object('users/' + uid).update({
+            status: 'offline'
+        }).catch((error) => console.log(error));
+    }
+
     getUserData() {
         var uid = firebase.auth().currentUser.uid;
         return this.db.object('users/' + uid).valueChanges();

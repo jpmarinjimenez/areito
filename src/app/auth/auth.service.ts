@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -20,7 +19,7 @@ export interface AuthResponseData {
 @Injectable({
     providedIn: 'root',
 })
-export class AuthService implements OnInit {
+export class AuthService implements OnDestroy {
     user = new BehaviorSubject<firebase.User>(null);
     provider = new firebase.auth.FacebookAuthProvider();
 
@@ -28,13 +27,8 @@ export class AuthService implements OnInit {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 this.handleAuthentication();
-            } else {
-                console.log('Not Loggedin');
             }
         });
-    }
-
-    ngOnInit() {
     }
 
     // Email
@@ -99,15 +93,23 @@ export class AuthService implements OnInit {
         this.firebaseService.setUserData(basicUser, user.uid);
     }
 
-    // Logout
-    logout() {
-        this.user.next(null);
-        return firebase.auth().signOut();
-    }
-
+    // Get logged in user
     getUser() {
         const user = firebase.auth().currentUser;
         this.user.next(user);
         return user;
+    }
+
+    // Logout
+    logout() {
+        const user = firebase.auth().currentUser;
+        this.firebaseService.setUserOffline(user.uid);
+
+        this.user.next(null);
+        return firebase.auth().signOut();
+    }
+
+    ngOnDestroy() {
+        this.logout();
     }
 }

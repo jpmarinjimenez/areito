@@ -1,5 +1,5 @@
 <app-carousel></app-carousel>
 
-<div class="contenedor-login">
+<div *ngIf="!userAuthenticated" class="contenedor-login">
     <a type="button" routerLink="/login" class="btn btn-primary">Login</a>
 </div>

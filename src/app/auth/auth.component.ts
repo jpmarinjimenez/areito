@@ -14,10 +14,6 @@ export class AuthComponent {
 
     constructor(private authService: AuthService, private router: Router) {}
 
-    facebookSignInPopup(): void {
-        this.authService.facebookSignInPopup();
-    }
-
     changeMode(): void {
         this.loginMode = !this.loginMode;
     }
@@ -36,5 +32,9 @@ export class AuthComponent {
         }
 
         this.authService.register(form.value);
+    }
+
+    facebookSignInPopup(): void {
+        this.authService.facebookSignInPopup();
     }
 }
