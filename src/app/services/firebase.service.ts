@@ -18,15 +18,29 @@ export class FirebaseService {
     }
 
     setUserOnline(uid: string) {
-        this.db.object('users/' + uid).update({
-            status: 'online'
-        }).catch((error) => console.log(error));
+        this.db
+            .object('users/' + uid)
+            .update({
+                status: 'online',
+            })
+            .catch((error) => console.log(error));
+
+        this.db.database
+            .refFromURL('users/' + uid)
+            .onDisconnect()
+            .update({
+                status: 'offline',
+            })
+            .catch((error) => console.log(error));
     }
 
     setUserOffline(uid: string) {
-        this.db.object('users/' + uid).update({
-            status: 'offline'
-        }).catch((error) => console.log(error));
+        this.db
+            .object('users/' + uid)
+            .update({
+                status: 'offline',
+            })
+            .catch((error) => console.log(error));
     }
 
     getUserData() {
