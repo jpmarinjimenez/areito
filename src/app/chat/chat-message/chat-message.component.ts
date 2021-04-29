@@ -26,5 +26,8 @@ export class ChatMessageComponent implements OnInit {
         this.timeStamp = chatMessage.timeSent;
         this.displayName = chatMessage.displayName;
         this.uid = chatMessage.uid;
+
+        const user = firebase.auth().currentUser;
+        user.uid === this.chatMessage.uid ? this.isOwnMessage = true : this.isOwnMessage = false;
     }
 }
