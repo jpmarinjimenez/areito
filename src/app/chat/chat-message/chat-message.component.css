@@ -11,6 +11,7 @@
 
 .isOwnMessageContainer {
     background-color: #01579b;
+    float: right;
 }
 
 .messageData {
