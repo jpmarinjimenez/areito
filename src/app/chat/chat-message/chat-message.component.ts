@@ -1,9 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AuthService } from '../../auth/auth.service';
 import { ChatMessage } from '../../models/chat-message.model';
 import firebase from 'firebase/app';
-import { FirebaseService } from 'src/app/services/firebase.service';
-import { User } from 'src/app/models/user.model';
 
 @Component({
     selector: 'chat-message',

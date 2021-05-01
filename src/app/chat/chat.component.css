@@ -12,7 +12,7 @@ body {
     background: #eee;
     background-attachment: fixed;
     background-size: cover;
-    font-family: "Open Sans", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 app-chat {
@@ -38,7 +38,7 @@ chat-form {
 
 .mainContent {
     display: flex;
-    background-image: url("/assets/carousel/hector-lavoe.jpg");
+    background-image: url('/assets/carousel/hector-lavoe.jpg');
     background-size: cover;
     background-position: center;
     max-height: calc(100vh - 120px) !important;
@@ -64,6 +64,17 @@ chat-form {
     max-height: calc(100vh - 120px) !important;
     overflow-y: scroll;
     padding: 20px 0px 0px 24px;
+
+    width: 100vw!important;
+    overflow-x: hidden;
+}
+
+.feedWrapper::-webkit-scrollbar {
+    width: 1vw;
+    background: transparent;
+}
+.feedWrapper::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 .chatFormWrapper {
