@@ -1,4 +1,4 @@
-* {
+/* * {
     height: 100%;
     box-sizing: border-box;
     margin: 0;
@@ -12,8 +12,7 @@ body {
     background: #eee;
     background-attachment: fixed;
     background-size: cover;
-    font-family: 'Open Sans', sans-serif;
-}
+} */
 
 app-chat {
     display: flex;
@@ -38,6 +37,7 @@ chat-form {
 
 .mainContent {
     display: flex;
+    flex-wrap: wrap;
     background-image: url('/assets/carousel/hector-lavoe.jpg');
     background-size: cover;
     background-position: center;
@@ -49,24 +49,39 @@ chat-form {
     background-color: #00000099;
     color: #fff;
     display: flex;
-    font-size: 1.2em;
-    flex: 1;
+    flex: 3;
     order: 1;
-    padding: 20px 0px 40px 30px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-right: 15px;
+    padding-left: 15px;
     border-right: 1px solid #222;
     min-height: calc(100vh - 120px) !important;
 }
 
 .feedWrapper {
-    font-size: 1.2em;
-    flex: 5;
+    flex: 10;
     order: 2;
     max-height: calc(100vh - 120px) !important;
     overflow-y: scroll;
-    padding: 20px 0px 0px 24px;
+
+    padding-right: 15px;
+    padding-left: 15px;
 
     width: 100vw!important;
     overflow-x: hidden;
+}
+
+@media (max-width: 991px) {
+    .userListWrapper {
+        flex: auto;
+        min-height: 0px !important;
+        height: auto;
+        display: none;
+    }
+    .feedWrapper {
+        flex: auto;
+    }
 }
 
 .feedWrapper::-webkit-scrollbar {
